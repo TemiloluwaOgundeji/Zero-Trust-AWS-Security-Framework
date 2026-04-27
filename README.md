@@ -149,5 +149,3 @@ terraform apply
 
 
 
-
-This project is for educational purposes as part of a cloud security learning program.
