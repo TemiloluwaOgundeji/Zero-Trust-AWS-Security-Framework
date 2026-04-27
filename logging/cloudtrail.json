@@ -1,0 +1,8 @@
+{
+  "TrailName": "org-wide-trail",
+  "IsMultiRegionTrail": true,
+  "IncludeGlobalServiceEvents": true,
+  "EnableLogFileValidation": true,
+  "S3BucketName": "org-log-archive-bucket",
+  "CloudWatchLogsEnabled": true
+}

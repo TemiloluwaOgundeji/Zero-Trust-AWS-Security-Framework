@@ -1,0 +1,46 @@
+{
+  "Version": "2012-10-17",
+  "Statement": [
+    {
+      "Sid": "BillingConsoleAccess",
+      "Effect": "Allow",
+      "Action": [
+        "aws-portal:ViewBilling",
+        "aws-portal:ViewUsage",
+        "aws-portal:ViewAccount"
+      ],
+      "Resource": "*"
+    },
+    {
+      "Sid": "CostExplorerAccess",
+      "Effect": "Allow",
+      "Action": [
+        "ce:GetCostAndUsage",
+        "ce:GetCostForecast",
+        "ce:GetUsageReport",
+        "ce:ListCostCategoryDefinitions"
+      ],
+      "Resource": "*"
+    },
+    {
+      "Sid": "BudgetsAccess",
+      "Effect": "Allow",
+      "Action": [
+        "budgets:ViewBudget",
+        "budgets:DescribeBudgets",
+        "budgets:DescribeBudgetActions"
+      ],
+      "Resource": "*"
+    },
+    {
+      "Sid": "TaggingReadAccess",
+      "Effect": "Allow",
+      "Action": [
+        "tag:GetResources",
+        "tag:GetTagKeys",
+        "tag:GetTagValues"
+      ],
+      "Resource": "*"
+    }
+  ]
+}
