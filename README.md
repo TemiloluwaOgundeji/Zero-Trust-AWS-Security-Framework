@@ -14,14 +14,14 @@ The goal is to build a secure, multi-account AWS environment from the ground up 
 **Architecture Overview:**
 The system is built using **AWS Organizations** with separate accounts for isolation and security:
 
-🔹 Accounts Structure
+**Accounts Structure:**
 
 * Dev Account – Development activities
 * Prod Account – Production workloads
 * Security Account – Logging, monitoring, auditing
 * Finance Account – Billing and cost management
 
-🔹 Core Services Used
+**Core Services Used:**
 
 * AWS Organizations (Account governance)
 * IAM (Identity and access control)
@@ -43,12 +43,12 @@ This project follows Zero-Trust principles, meaning:
 
 **Key Features**
 
-1. Multi-Account Setup
+1. Multi-Account Setup:
 * AWS Organization with multiple accounts
 * Isolation of workloads by environment and function
 
 
-2. IAM Role-Based Access Control
+2. IAM Role-Based Access Control:
 * Roles created for:
 
   - Developer
@@ -60,14 +60,14 @@ This project follows Zero-Trust principles, meaning:
 * No direct user access to resources
 
 
-3. Cross-Account Access
+3. Cross-Account Access:
 
 * Secure role assumption between accounts
 * Trust relationships explicitly defined
 * Controlled access using IAM policies
 
 
-4. Service Control Policies (SCPs)
+4. Service Control Policies (SCPs):
 
 * Prevent dangerous actions such as:
 
@@ -77,26 +77,26 @@ This project follows Zero-Trust principles, meaning:
 * Enforced at the organization level
 
 
-5. Audit Logging & Monitoring
+5. Audit Logging & Monitoring:
 
 * CloudTrail enabled across all accounts
 * Logs centralized in an S3 bucket (Security Account)
 * Ensures traceability and compliance
 
 
-6. MFA Enforcement
+6. MFA Enforcement:
 
 * Multi-Factor Authentication required for all users
 * Reduces risk of unauthorized access
 
 
-7. Temporary Credentials Only
+7. Temporary Credentials Only:
 
 * No long-term access keys allowed
 * Use of STS (Security Token Service) for session-based access
 
 
-8. Cost Allocation Tags
+8. Cost Allocation Tags:
 
 * Tags applied to resources for:
   - Cost tracking
@@ -106,7 +106,7 @@ This project follows Zero-Trust principles, meaning:
 
 
 
-**Deployment (Terraform)**
+**Deployment (Terraform):**
 
 Prerequisites:
 
