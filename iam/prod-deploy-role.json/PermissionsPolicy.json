@@ -1,18 +1,61 @@
 {
   "Version": "2012-10-17",
   "Statement": [
+
     {
-      "Sid": "AllowProdDeployment",
+      "Sid": "EC2Global",
       "Effect": "Allow",
       "Action": [
         "ec2:RunInstances",
-        "ec2:TerminateInstances",
-        "ec2:Describe*",
-        "s3:PutObject",
-        "s3:GetObject",
-        "s3:ListBucket"
+        "ec2:Describe*"
       ],
       "Resource": "*"
+    },
+
+    {
+      "Sid": "EC2InstanceControl",
+      "Effect": "Allow",
+      "Action": [
+        "ec2:TerminateInstances"
+      ],
+      "Resource": [
+        "arn:aws:ec2:*:*:instance/prod-*"
+      ]
+    },
+
+    {
+      "Sid": "S3BucketAccess",
+      "Effect": "Allow",
+      "Action": [
+        "s3:ListBucket"
+      ],
+      "Resource": [
+        "arn:aws:s3:::app-deploy-bucket"
+      ]
+    },
+
+    {
+      "Sid": "S3ObjectAccess",
+      "Effect": "Allow",
+      "Action": [
+        "s3:GetObject",
+        "s3:PutObject"
+      ],
+      "Resource": [
+        "arn:aws:s3:::app-deploy-bucket/*"
+      ]
+    },
+
+    {
+      "Sid": "DenyNonProd",
+      "Effect": "Deny",
+      "Action": "*",
+      "Resource": [
+        "arn:aws:ec2:*:*:instance/dev-*",
+        "arn:aws:s3:::dev-*",
+        "arn:aws:s3:::dev-*/*"
+      ]
     }
+
   ]
 }

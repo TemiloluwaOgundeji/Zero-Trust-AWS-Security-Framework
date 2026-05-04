@@ -1,21 +1,33 @@
 {
   "Version": "2012-10-17",
   "Statement": [
+
     {
-      "Sid": "EC2FullControl",
+      "Sid": "EC2GlobalActions",
       "Effect": "Allow",
       "Action": [
         "ec2:Describe*",
+        "ec2:RunInstances"
+      ],
+      "Resource": "*"
+    },
+
+    {
+      "Sid": "EC2InstanceActions",
+      "Effect": "Allow",
+      "Action": [
         "ec2:StartInstances",
         "ec2:StopInstances",
         "ec2:RebootInstances",
         "ec2:TerminateInstances",
-        "ec2:RunInstances",
         "ec2:CreateTags",
         "ec2:DeleteTags"
       ],
-      "Resource": "*"
+      "Resource": [
+        "arn:aws:ec2:*:*:instance/*"
+      ]
     },
+
     {
       "Sid": "S3DeploymentAccess",
       "Effect": "Allow",
@@ -30,6 +42,7 @@
         "arn:aws:s3:::app-deploy-bucket/*"
       ]
     },
+
     {
       "Sid": "CloudWatchLogsRead",
       "Effect": "Allow",
@@ -38,8 +51,11 @@
         "logs:DescribeLogStreams",
         "logs:GetLogEvents"
       ],
-      "Resource": "*"
+      "Resource": [
+        "arn:aws:logs:*:*:log-group:*"
+      ]
     },
+
     {
       "Sid": "DenyIAMChanges",
       "Effect": "Deny",
@@ -54,5 +70,6 @@
       ],
       "Resource": "*"
     }
+
   ]
 }

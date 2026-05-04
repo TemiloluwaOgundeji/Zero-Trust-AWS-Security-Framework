@@ -1,25 +1,38 @@
 {
   "Version": "2012-10-17",
   "Statement": [
+
     {
       "Sid": "EC2ReadOnly",
       "Effect": "Allow",
-      "Action": [
-        "ec2:Describe*"
-      ],
+      "Action": ["ec2:Describe*"],
       "Resource": "*"
     },
+
     {
-      "Sid": "S3ReadOnly",
+      "Sid": "S3GlobalRead",
       "Effect": "Allow",
       "Action": [
         "s3:ListAllMyBuckets",
-        "s3:GetBucketLocation",
-        "s3:GetObject",
-        "s3:ListBucket"
+        "s3:GetBucketLocation"
       ],
       "Resource": "*"
     },
+
+    {
+      "Sid": "S3BucketRead",
+      "Effect": "Allow",
+      "Action": ["s3:ListBucket"],
+      "Resource": ["arn:aws:s3:::org-log-archive-bucket"]
+    },
+
+    {
+      "Sid": "S3ObjectRead",
+      "Effect": "Allow",
+      "Action": ["s3:GetObject"],
+      "Resource": ["arn:aws:s3:::org-log-archive-bucket/*"]
+    },
+
     {
       "Sid": "IAMReadOnly",
       "Effect": "Allow",
@@ -29,6 +42,7 @@
       ],
       "Resource": "*"
     },
+
     {
       "Sid": "CloudTrailAuditAccess",
       "Effect": "Allow",
@@ -36,8 +50,11 @@
         "cloudtrail:LookupEvents",
         "cloudtrail:DescribeTrails"
       ],
-      "Resource": "*"
+      "Resource": [
+        "arn:aws:cloudtrail:*:*:trail/*"
+      ]
     },
+
     {
       "Sid": "CloudWatchLogsRead",
       "Effect": "Allow",
@@ -46,7 +63,10 @@
         "logs:DescribeLogStreams",
         "logs:GetLogEvents"
       ],
-      "Resource": "*"
+      "Resource": [
+        "arn:aws:logs:*:*:log-group:*"
+      ]
     }
+
   ]
 }

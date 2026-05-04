@@ -17,7 +17,7 @@
       "Action": [
         "ce:GetCostAndUsage",
         "ce:GetCostForecast",
-        "ce:GetUsageReport",
+        "ce:GetDimensionValues",
         "ce:ListCostCategoryDefinitions"
       ],
       "Resource": "*"
